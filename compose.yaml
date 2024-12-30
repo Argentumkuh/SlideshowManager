@@ -1,0 +1,18 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+  postgres:
+    container_name: postgres_smanager
+    build:
+      context: .
+      dockerfile: postgresDockerfile
+    environment:
+      - 'POSTGRES_DB=slideshow_manager_db'
+      - 'POSTGRES_PASSWORD=admin'
+      - 'POSTGRES_USER=admin'
+    ports:
+      - '5432:5432'
